@@ -1,0 +1,296 @@
+:root {
+  --bs-body-bg: #f6f3ec;
+  --bs-body-font-family: 'Inter', system-ui, sans-serif;
+  --bs-primary: #4338ca;
+  --bs-primary-rgb: 67, 56, 202;
+  --bs-link-color: #4338ca;
+  --bs-link-color-rgb: 67, 56, 202;
+}
+
+h1, h2, h3, .navbar-brand { font-family: 'Fraunces', Georgia, serif; }
+
+.btn-primary {
+  --bs-btn-bg: #4338ca;
+  --bs-btn-border-color: #4338ca;
+  --bs-btn-hover-bg: #3730a3;
+  --bs-btn-hover-border-color: #3730a3;
+  --bs-btn-active-bg: #3730a3;
+}
+.btn-outline-primary {
+  --bs-btn-color: #4338ca;
+  --bs-btn-border-color: #d9d4c5;
+  --bs-btn-hover-bg: #4338ca;
+  --bs-btn-hover-border-color: #4338ca;
+  --bs-btn-active-bg: #4338ca;
+  --bs-btn-active-border-color: #4338ca;
+  font-weight: 600;
+}
+.text-primary { color: #4338ca !important; }
+.bg-primary { background-color: #4338ca !important; }
+
+.app-main { min-height: 70vh; }
+
+.app-navbar { background: rgba(246, 243, 236, 0.92); backdrop-filter: blur(8px); border-bottom: 1px solid #e7e1d3; }
+.app-navbar .nav-link { color: #6b7280; font-weight: 500; border-radius: 999px; padding: 0.4rem 0.9rem; }
+.app-navbar .nav-link.active { background: #eceafc; color: #4338ca; }
+.brand-mark { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: #4338ca; color: #fff; font-size: 1rem; }
+
+/* Agenda */
+/* Index alphabétique */
+.letter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 16px; }
+.letter-tabs .btn { min-width: 36px; border-radius: 10px; }
+
+/* Livre */
+.book-stage { margin-bottom: 36px; }
+
+.book-frame {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 26px;
+  border-radius: 12px;
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 2px 4px),
+    linear-gradient(145deg, #6a4430, #43291b);
+  box-shadow:
+    0 45px 40px -30px rgba(0, 0, 0, 0.55),
+    0 3px 0 #2e1a10,
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+/* coutures de la couverture */
+.book-frame::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1.5px dashed rgba(240, 205, 150, 0.32);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.book {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 540px;
+  perspective: 2400px;
+}
+
+/* Pages */
+.book-page {
+  position: relative;
+  padding: 28px 28px 40px;
+  overflow: hidden;
+  background-color: #fbf7ec;
+  background-image:
+    radial-gradient(ellipse at 50% 35%, rgba(255, 255, 255, 0.7), transparent 70%),
+    repeating-linear-gradient(transparent 0 35px, rgba(120, 100, 60, 0.07) 35px 36px);
+}
+.book-page.left {
+  border-radius: 6px 0 0 6px;
+  /* tranche des feuilles empilées, côté gauche */
+  box-shadow:
+    -1px 0 0 #e6dec8,
+    -2px 0 0 #fbf7ec,
+    -3px 0 0 #dcd2b8,
+    -4px 1px 0 #fbf7ec,
+    -5px 1px 0 #d2c7ab,
+    -6px 2px 0 #f3ecd9,
+    -7px 2px 0 #c9bd9f;
+}
+.book-page.right {
+  border-radius: 0 6px 6px 0;
+  box-shadow:
+    1px 0 0 #e6dec8,
+    2px 0 0 #fbf7ec,
+    3px 0 0 #dcd2b8,
+    4px 1px 0 #fbf7ec,
+    5px 1px 0 #d2c7ab,
+    6px 2px 0 #f3ecd9,
+    7px 2px 0 #c9bd9f;
+}
+
+/* ombre du pli central */
+.book-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 70px;
+  pointer-events: none;
+  z-index: 3;
+}
+.book-page.left::before {
+  right: 0;
+  background: linear-gradient(to left, rgba(60, 40, 20, 0.34), rgba(60, 40, 20, 0.1) 40%, transparent);
+}
+.book-page.right::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(60, 40, 20, 0.34), rgba(60, 40, 20, 0.1) 40%, transparent);
+}
+
+.book-page-inner { height: 100%; display: flex; flex-direction: column; gap: 16px; }
+.book-slot { flex: 1 1 0; min-height: 0; }
+.book-slot .card-body { align-items: center; }
+.book-slot .user-card {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(120, 100, 60, 0.28);
+}
+.page-number {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #a39b86;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 0.85rem;
+  z-index: 4;
+}
+
+/* reliure */
+.spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-1.5px);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.1));
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* signet */
+.ribbon {
+  position: absolute;
+  left: 57%;
+  bottom: -38px;
+  width: 15px;
+  height: 56px;
+  background: linear-gradient(90deg, #8f2424, #b53a3a 50%, #8f2424);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%);
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
+  z-index: 0;
+}
+
+/* Feuille qui tourne */
+.leaf {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 5;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  animation-duration: 0.85s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.leaf-next { animation-name: turn-next; }
+.leaf-prev { animation-name: turn-prev; }
+.leaf-face { position: absolute; inset: 0; backface-visibility: hidden; }
+.leaf-face.back { transform: rotateY(180deg); }
+
+/* ombre de courbure pendant le tour */
+.leaf-face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  animation-duration: 0.85s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.leaf-face.front::after { background: linear-gradient(to left, rgba(40, 25, 10, 0.55), rgba(40, 25, 10, 0.05) 70%); }
+.leaf-face.back::after  { background: linear-gradient(to right, rgba(40, 25, 10, 0.55), rgba(40, 25, 10, 0.05) 70%); }
+
+.leaf-next .leaf-face.front::after { animation-name: shade-in; }
+.leaf-next .leaf-face.back::after  { animation-name: shade-out; }
+.leaf-prev .leaf-face.front::after { animation-name: shade-out; }
+.leaf-prev .leaf-face.back::after  { animation-name: shade-in; }
+
+@keyframes turn-next {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(-180deg); }
+}
+@keyframes turn-prev {
+  from { transform: rotateY(-180deg); }
+  to   { transform: rotateY(0deg); }
+}
+@keyframes shade-in {
+  0%   { opacity: 0; }
+  50%, 100% { opacity: 1; }
+}
+@keyframes shade-out {
+  0%, 50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 767.98px) {
+  .book-frame { padding: 14px 16px; }
+  .book { height: 500px; }
+  .book-page { padding: 18px 12px 36px; }
+  .book-page::before { width: 40px; }
+  .book-slot .avatar { display: none; }
+  .book-slot .card { font-size: 0.8rem; }
+}
+
+@media (max-width: 767.98px) {
+  .book { height: 500px; }
+  .book-page { padding: 18px 12px 36px; }
+  .book-slot .avatar { display: none; }
+  .book-slot .card { font-size: 0.8rem; }
+}
+/* Contacts */
+.user-card { background: #fffdf8; border-color: #e7e1d3; color: inherit; transition: transform 0.15s, box-shadow 0.15s; }
+.user-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -18px rgba(31, 36, 48, 0.4); }
+.avatar { flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; color: #fff; font-weight: 600; }
+.avatar.big { width: 84px; height: 84px; font-size: 1.6rem; }
+.min-w-0 { min-width: 0; }
+
+/* Flèches de navigation autour du livre */
+.book-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.book-stage .book-frame {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+.arrow-btn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #e7e1d3;
+  background: #fffdf8;
+  color: #4338ca;
+  box-shadow: 0 8px 20px -10px rgba(31, 36, 48, 0.45);
+  transition: transform 0.15s, background-color 0.15s, color 0.15s;
+}
+.arrow-btn:hover:not(:disabled) {
+  background: #4338ca;
+  color: #fff;
+  transform: scale(1.08);
+}
+.arrow-btn:disabled {
+  opacity: 0.35;
+}
+
+@media (max-width: 767.98px) {
+  .book-stage { gap: 6px; }
+  .arrow-btn { width: 36px; height: 36px; }
+  .arrow-btn svg { width: 18px; height: 18px; }
+}
